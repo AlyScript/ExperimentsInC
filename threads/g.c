@@ -15,11 +15,11 @@ int water = 10;
 void* routine(void* args) {
     if (rand() % 2 == 0) {
         pthread_mutex_lock(&mutexFuel);
-        sleep(1);
+        sleep(1); // removing this will decrease chance of deadlock
         pthread_mutex_lock(&mutexWater);
     } else {
         pthread_mutex_lock(&mutexWater);
-        sleep(1);
+        sleep(1); // removing this will decrease chance of deadlock
         pthread_mutex_lock(&mutexFuel);
     }
 
